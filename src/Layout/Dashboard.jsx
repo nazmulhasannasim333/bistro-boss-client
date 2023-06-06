@@ -18,26 +18,18 @@ import useCart from "../hooks/useCart";
 const Dashboard = () => {
   const [cart] = useCart();
 
-  // TODO: load data from server
-  // const isAdmin = false;
-
   const [isAdmin] = useAdmin();
-  console.log(isAdmin);
-  
 
 
   return (
-    <div className="drawer drawer-mobile">
+     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center ">
-        <Outlet></Outlet>
-        <label
-          htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button lg:hidden"
-        >
-          Open drawer
-        </label>
-      </div>
+
+<div className="drawer-content flex flex-col">
+<Outlet></Outlet>
+    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+  
+  </div> 
       <div className="drawer-side bg-[#D1A054]">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 uppercase">
@@ -50,21 +42,21 @@ const Dashboard = () => {
            <li>
             <NavLink className={({ isActive }) =>
             isActive ? "font-semibold text-white" : ""
-          } to="/dashboard/home">
+          } to="/dashboard/adminhome">
               <FaHome /> Admin Home
             </NavLink>
           </li>
           <li>
             <NavLink className={({ isActive }) =>
             isActive ? "font-semibold text-white" : ""
-          } to="/dashboard/reservations">
+          } to="/dashboard/additem">
              <FaUtensils /> Add Item
             </NavLink>
           </li>
           <li>
             <NavLink className={({ isActive }) =>
             isActive ? "font-semibold text-white" : ""
-          } to="/dashboard/history">
+          } to="/dashboard/manageitems">
               <FaBars /> Manage Items
             </NavLink>
           </li>
@@ -88,7 +80,7 @@ const Dashboard = () => {
            <li>
             <NavLink className={({ isActive }) =>
             isActive ? "font-semibold text-white" : ""
-          } to="/dashboard/home">
+          } to="/dashboard/userhome">
               <FaHome></FaHome> User Home
             </NavLink>
           </li>
@@ -151,3 +143,28 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+// import React from 'react';
+
+// const Dashboard = () => {
+//   return (
+//     <div>
+     
+  
+  
+//   <div className="drawer-side">
+//     <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
+//     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+//       {/* Sidebar content here */}
+//       <li><a>Sidebar Item 1</a></li>
+//       <li><a>Sidebar Item 2</a></li>
+//     </ul>
+  
+//   </div>
+// </div>
+//     </div>
+//   );
+// };
+
+// export default Dashboard;

@@ -13,16 +13,8 @@ const useCart = () => {
         enabled: !loading,
         queryFn: async () => {
             const response = await axiosSecure(`/carts?email=${user?.email}`)
-            console.log(response);
             return response.data;
           },
-        //     const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`, {
-        //         headers: {
-        //             authorization: `Bearer ${token}`
-        //         }
-        //     })
-        //     return response.json();
-        //   },
       })
 
 return [cart, refetch];

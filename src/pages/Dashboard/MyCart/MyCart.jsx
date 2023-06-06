@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useCart from "../../../hooks/useCart";
@@ -21,14 +22,14 @@ const MyCart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${item._id}`, {
+        fetch(`https://bistro-boss-server-nazmulhasannasim333.vercel.app/carts/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
               refetch();
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              Swal.fire("Deleted!", "Your order has been deleted.", "success");
             }
           });
       }
@@ -47,9 +48,9 @@ const MyCart = () => {
         <div className="uppercase text-2xl font-bold flex justify-evenly py-5">
           <h3>Total Orders: {cart.length}</h3>
           <h3>Total Price: ${price}</h3>
-          <button className="btn btn-sm bg-[#D1A054] border-none  px-5">
+         <Link to="/dashboard/payment"><button disabled={price < 1} className="btn btn-sm bg-[#D1A054] border-none  px-5">
             Pay
-          </button>
+          </button></Link>
         </div>
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
